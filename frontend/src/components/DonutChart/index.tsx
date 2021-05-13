@@ -14,7 +14,6 @@ const DonutChart = () => {
 
   const [chartData, setChartData] = useState<ChartData>({ labels: [], series: [] });
 
-  const [sum, setSum] = useState([]);
 
   useEffect(() => {
     axios.get(`${BASE_URL}/sales/amount-by-seller`)
@@ -24,10 +23,10 @@ const DonutChart = () => {
         const mySeries = data.map(x => x.sum)
 
         setChartData({ labels: myLabels, series: mySeries })
-        setSum(res.data.sum);
+
       });
   }, [])
-  
+
   const options = {
     legend: {
       show: true
